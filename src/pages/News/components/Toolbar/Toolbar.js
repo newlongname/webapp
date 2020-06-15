@@ -133,16 +133,25 @@ export const Toolbar = (props) => {
           Удалить
         </button>
 
-<EditWindow titleValue={titleValue} setTitleValue={setTitleValue} modalState={modalState} setModalState={setModalState} postFocus={props.postFocus} editedornew={editedornew} />
-<Confirm confirmState={confirmState} setConfirmState={setConfirmState} deletePost={deletePost} postFocus={props.postFocus} />
+<EditWindow 
+titleValue={titleValue} 
+setTitleValue={setTitleValue} 
+bodyValue={bodyValue} 
+setBodyValue={setBodyValue}
+modalState={modalState} 
+setModalState={setModalState} 
+postFocus={props.postFocus} 
+editedornew={editedornew} />
+
+  <Confirm 
+confirmState={confirmState} 
+setConfirmState={setConfirmState} 
+deletePost={deletePost} 
+postFocus={props.postFocus} />
 
 
 
      </div>
-
-
-
-
     </Fragment>
   )
 }
