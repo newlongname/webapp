@@ -21,15 +21,10 @@ export const Login = (props) => {
 
 
 //Получаем данные пользователя, которые потом пойдут в /profile
-  const getLogin = () => {
-    props.setLoaderState(true);
-    fetch("https://jsonplaceholder.typicode.com/users/1")
+  const getLogin = () => {fetch("https://jsonplaceholder.typicode.com/users/1")
       .then((response) => response.json())
-      .then(
-        (json) => props.setConfidentialData(json),
-        props.setLoginState(true),
-        props.setLoaderState(false)
-      )
+      .then((json) => props.setConfidentialData(json),
+        props.setLoginState(true))
       .catch(() => setAlertState('ошибка запроса к серверу'));
 }
 
