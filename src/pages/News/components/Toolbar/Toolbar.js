@@ -57,7 +57,6 @@ export const Toolbar = (props) => {
     item.id = i;
     item.title = titleValue;
     item.body = bodyValue;
-    console.log(item)
     fetch("https://jsonplaceholder.typicode.com/posts/1", {
       method: "PUT",
       body: JSON.stringify(item),
@@ -66,9 +65,11 @@ export const Toolbar = (props) => {
       },
     })
       .then((response) => response.json())
-      .then((json) => [...arr, json] )
-      .then((array) => {
-        props.setPostsState(array);
+      .then((json) => {
+        arr[i-1] = json;
+        return arr})
+      .then(() => {
+        props.setPostsState([...arr]);
         setModalState("hidden");
         props.setPostFocus("");
       })
@@ -133,20 +134,20 @@ export const Toolbar = (props) => {
           Удалить
         </button>
 
-<EditWindow 
-titleValue={titleValue} 
-setTitleValue={setTitleValue} 
-bodyValue={bodyValue} 
+<EditWindow
+titleValue={titleValue}
+setTitleValue={setTitleValue}
+bodyValue={bodyValue}
 setBodyValue={setBodyValue}
-modalState={modalState} 
-setModalState={setModalState} 
-postFocus={props.postFocus} 
+modalState={modalState}
+setModalState={setModalState}
+postFocus={props.postFocus}
 editedornew={editedornew} />
 
-  <Confirm 
-confirmState={confirmState} 
-setConfirmState={setConfirmState} 
-deletePost={deletePost} 
+  <Confirm
+confirmState={confirmState}
+setConfirmState={setConfirmState}
+deletePost={deletePost}
 postFocus={props.postFocus} />
 
 

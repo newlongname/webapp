@@ -31,7 +31,7 @@ li {
 }
 
 .wrap {
-  pointer-events: none;
+  z-index: -1;
   position: absolute;
   display: flex;
   flex-direction: column;
